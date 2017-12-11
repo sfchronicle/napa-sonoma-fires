@@ -22,8 +22,8 @@ if (screen.width <= 480) {
   var sf_lat = 38.6;
   var sf_long = -122.4;
   var zoom_deg = 8;
-  var max_zoom_deg = 8;//16
-  var min_zoom_deg = 8;//7
+  var max_zoom_deg = 16
+  var min_zoom_deg = 7
 
   var offset_top = 900;
   var bottomOffset = 100;
@@ -32,8 +32,8 @@ if (screen.width <= 480) {
   var sf_lat = 38.4;
   var sf_long = -123;
   var zoom_deg = 8;
-  var max_zoom_deg = 8;//16
-  var min_zoom_deg = 8;//7
+  var max_zoom_deg = 16
+  var min_zoom_deg = 7
 
   var offset_top = 900;
   var bottomOffset = 200;
@@ -69,9 +69,9 @@ var styleLayer = L.mapbox.styleLayer('mapbox://styles/emro/cj8oq9bxg8zfu2rs3uw1o
 
 // zoom control is on top right
 // ADD THIS BACK WHEN ADD BACK ZOOMING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// L.control.zoom({
-//      position:'topright'
-// }).addTo(map);
+L.control.zoom({
+     position:'topright'
+}).addTo(map);
 
 // sizing evacuation and hospital icons
 var MapIcon = L.Icon.extend({
