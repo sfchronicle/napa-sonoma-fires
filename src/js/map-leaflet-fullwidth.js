@@ -1,5 +1,6 @@
 require("./lib/social"); //Do not delete
 var d3 = require('d3');
+require("./lib/leaflet-mapbox-gl");
 
 // format numbers
 var formatthousands = d3.format(",");
@@ -17,23 +18,42 @@ function formatDate(date,monSTR) {
 }
 
 // setting parameters for the center of the map and initial zoom level
-// FIX THIS UP WHEN ADD BACK ZOOMING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 if (screen.width <= 480) {
   var sf_lat = 38.6;
-  var sf_long = -122.4;
+  var sf_long = -122.6;
   var zoom_deg = 8;
-  var max_zoom_deg = 16
-  var min_zoom_deg = 7
+  var max_zoom_deg = 16;
+  var min_zoom_deg = 4;
+
+  var offset_top = 900;
+  var bottomOffset = 100;
+
+} else if (screen.width <= 800) {
+  var sf_lat = 38.6;
+  var sf_long = -122.8;
+  var zoom_deg = 8;
+  var max_zoom_deg = 16;
+  var min_zoom_deg = 4;
+
+  var offset_top = 900;
+  var bottomOffset = 100;
+
+} else if (screen.width <= 1024) {
+  var sf_lat = 38.6;
+  var sf_long = -124;
+  var zoom_deg = 8;
+  var max_zoom_deg = 16;
+  var min_zoom_deg = 4;
 
   var offset_top = 900;
   var bottomOffset = 100;
 
 } else {
   var sf_lat = 38.4;
-  var sf_long = -123;
-  var zoom_deg = 8;
-  var max_zoom_deg = 16
-  var min_zoom_deg = 7
+  var sf_long = -123.2;
+  var zoom_deg = 9;
+  var max_zoom_deg = 16;
+  var min_zoom_deg = 4;
 
   var offset_top = 900;
   var bottomOffset = 200;
@@ -44,28 +64,22 @@ var map = L.map("map-leaflet", {
   minZoom: min_zoom_deg,
   maxZoom: max_zoom_deg,
   zoomControl: false,
+  scrollWheelZoom: false,
+  attributionControl: false
 }).setView([sf_lat,sf_long], zoom_deg);
-
-// dragging and zooming controls
-map.scrollWheelZoom.disable();
-// map.dragging.disable();
-// map.touchZoom.disable();
-// map.doubleClickZoom.disable();
-// map.keyboard.disable();
 
 // initializing the svg layer
 L.svg().addTo(map);
 
-// add tiles to the map
-// var gl = L.mapboxGL({
-//     accessToken: 'pk.eyJ1IjoiZW1ybyIsImEiOiJjaXl2dXUzMGQwMDdsMzJuM2s1Nmx1M29yIn0._KtME1k8LIhloMyhMvvCDA',
-//     style: 'mapbox://styles/emro/cj8oq9bxg8zfu2rs3uw1ot59l',
-//     attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a>'
-// }).addTo(map);
+var gl = L.mapboxGL({
+    accessToken: 'pk.eyJ1IjoiZW1ybyIsImEiOiJjaXl2dXUzMGQwMDdsMzJuM2s1Nmx1M29yIn0._KtME1k8LIhloMyhMvvCDA',
+    style: 'mapbox://styles/emro/cjbib4t5e089k2sm7j3xygp50'
+}).addTo(map);
 
-L.mapbox.accessToken = 'pk.eyJ1IjoiZW1ybyIsImEiOiJjaXl2dXUzMGQwMDdsMzJuM2s1Nmx1M29yIn0._KtME1k8LIhloMyhMvvCDA';
-var styleLayer = L.mapbox.styleLayer('mapbox://styles/emro/cj8oq9bxg8zfu2rs3uw1ot59l')
-    .addTo(map);
+var attribution = L.control.attribution();
+attribution.setPrefix('');
+attribution.addAttribution('Map data: <a href="http://openstreetmap.org/copyright" target="_blank">© OpenStreetMap</a> <a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> | <a href="https://www.mapbox.com/map-feedback/" target="_blank" class="mapbox-improve-map">Improve this map</a>');
+attribution.addTo(map);
 
 // zoom control is on top right
 // ADD THIS BACK WHEN ADD BACK ZOOMING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -458,8 +472,8 @@ var labels = gLabels.selectAll("dotsLABELS")
 
 // adding circles to the map
 labels.append("text")
-    .style("font-size","18px")
-    .style("fill","#595959")
+    .style("font-size","14px")
+    .style("fill","black")
     .text(function(d){
       return d.Name+ " Fire";
     })

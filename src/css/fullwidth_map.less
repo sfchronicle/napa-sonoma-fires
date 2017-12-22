@@ -169,10 +169,13 @@
  top: 0;
 
  @media @map-width{
-  position: relative;
-    height: 450px;
+    position: relative;
+    height: 460px;
     width: 90%;
     margin: 0 auto;
+ }
+ @media @tablet {
+   height: 500px;
  }
 
 }
@@ -241,6 +244,7 @@ path {
   font-size: 15px;
 
   @media @mobile{
+    padding: 5px 20px 10px 20px;;
     font-size:14px;
   }
   @media @mini-mobile{
@@ -435,14 +439,21 @@ path {
 
     @media @map-width{
       display:block;
-      font-size:14px;
+      // font-size:14px;
     }
     @media @mini-mobile {
       font-size:12px;
     }
   }
 
+  @media @tablet {
+    padding: 30px;
+    font-size: 16px;
+    padding-bottom: 40px;
+  }
+
   @media @mobile {
+    font-size: 14px;
     padding: 20px 10px;
     margin-top: 0;
     padding-bottom: 50px;
@@ -452,6 +463,11 @@ path {
   @media @mini-mobile {
     padding: 10px;
     margin-top: 0;
+  }
+  .credit {
+    @media @tablet {
+      padding-bottom: 5px;
+    }
   }
 }
 
@@ -606,6 +622,7 @@ a {
     padding-top:5px;
     max-width: none;
     background:#fff;
+    padding-bottom: 5px;
   }
 }
 
