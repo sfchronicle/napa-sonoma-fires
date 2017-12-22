@@ -49,7 +49,7 @@ if (screen.width <= 480) {
   var bottomOffset = 100;
 
 } else {
-  var sf_lat = 38.4;
+  var sf_lat = 38.3;
   var sf_long = -123.2;
   var zoom_deg = 9;
   var max_zoom_deg = 16;
