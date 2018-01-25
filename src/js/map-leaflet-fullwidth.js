@@ -349,9 +349,9 @@ document.getElementById("airquality").addEventListener("click",function() {
     this.classList.add("active");
 
     // obtain most recent dataset based on file on server
-    d3.text('//extras.sfgate.com/editorial/wildfires/airquality_date.txt?', function(text) {
-      var urlpathPollution = "//berkeleyearth.lbl.gov/air-quality/maps/hour/"+text.substring(0,6)+"/"+text+"/tiles/health/{z}/{x}/{y}.png";
-      var urlpathContours = "//berkeleyearth.lbl.gov/air-quality/maps/hour/"+text.substring(0,6)+"/"+text+"/tiles/contour/{z}/{x}/{y}.png";
+    d3.text('https://extras.sfgate.com/editorial/wildfires/airquality_date.txt?', function(text) {
+      var urlpathPollution = "http://berkeleyearth.lbl.gov/air-quality/maps/hour/"+text.substring(0,6)+"/"+text+"/tiles/health/{z}/{x}/{y}.png";
+      var urlpathContours = "http://berkeleyearth.lbl.gov/air-quality/maps/hour/"+text.substring(0,6)+"/"+text+"/tiles/contour/{z}/{x}/{y}.png";
 
       console.log(urlpathPollution);
 
