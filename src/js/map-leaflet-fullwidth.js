@@ -34,8 +34,8 @@ if (screen.width <= 480) {
 } else if (screen.width <= 800) {
   console.log("tablet");
   var sf_lat = 38.6;
-  var sf_long = -122.8;
-  var zoom_deg = 6;
+  var sf_long = -122.2;
+  var zoom_deg = 8;
   var max_zoom_deg = 16;
   var min_zoom_deg = 4;
 
@@ -45,8 +45,8 @@ if (screen.width <= 480) {
 } else if (screen.width <= 1024) {
   console.log("laptop");
   var sf_lat = 38.6;
-  var sf_long = -124;
-  var zoom_deg = 6;
+  var sf_long = -123.6;
+  var zoom_deg = 8;
   var max_zoom_deg = 16;
   var min_zoom_deg = 4;
 
