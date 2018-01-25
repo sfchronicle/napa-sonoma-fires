@@ -5,6 +5,8 @@ require("./lib/leaflet-mapbox-gl");
 // format numbers
 var formatthousands = d3.format(",");
 
+console.log(screen.width);
+
 // format dates
 function formatDate(date,monSTR) {
   var hours = date.getHours();
@@ -19,6 +21,7 @@ function formatDate(date,monSTR) {
 
 // setting parameters for the center of the map and initial zoom level
 if (screen.width <= 480) {
+  console.log("mobile");
   var sf_lat = 38.6;
   var sf_long = -122.6;
   var zoom_deg = 8;
@@ -29,9 +32,10 @@ if (screen.width <= 480) {
   var bottomOffset = 100;
 
 } else if (screen.width <= 800) {
+  console.log("tablet");
   var sf_lat = 38.6;
   var sf_long = -122.8;
-  var zoom_deg = 8;
+  var zoom_deg = 6;
   var max_zoom_deg = 16;
   var min_zoom_deg = 4;
 
@@ -39,8 +43,20 @@ if (screen.width <= 480) {
   var bottomOffset = 100;
 
 } else if (screen.width <= 1024) {
+  console.log("laptop");
   var sf_lat = 38.6;
   var sf_long = -124;
+  var zoom_deg = 6;
+  var max_zoom_deg = 16;
+  var min_zoom_deg = 4;
+
+  var offset_top = 900;
+  var bottomOffset = 100;
+
+} else if (screen.width <= 2000) {
+  console.log("bigger laptop");
+  var sf_lat = 38.4;
+  var sf_long = -123.5;
   var zoom_deg = 8;
   var max_zoom_deg = 16;
   var min_zoom_deg = 4;
@@ -49,8 +65,9 @@ if (screen.width <= 480) {
   var bottomOffset = 100;
 
 } else {
-  var sf_lat = 38.3;
-  var sf_long = -123.2;
+  console.log("wide screen");
+  var sf_lat = 38.45;
+  var sf_long = -123.5;
   var zoom_deg = 9;
   var max_zoom_deg = 16;
   var min_zoom_deg = 4;
@@ -166,7 +183,11 @@ var drawIcons = function() {
   });
 
   origins_data.forEach(function(d){
-    var html_str = "<b>"+d.Fire+"</b><br><em>Started at "+d.TimeStarted+"</em><br><em>Burned <b>"+formatthousands(d.Acreage)+"</b> acres</em><br><em>Killed <b>"+d.Victims+"</b></em><br><br>"+d.Description;
+    if (d.Description){
+      var html_str = "<b>"+d.Fire+"</b><br><em>Started at "+d.TimeStarted+"</em><br><em>Burned <b>"+formatthousands(d.Acreage)+"</b> acres</em><br><em>Killed <b>"+d.Victims+"</b></em><br><br>"+d.Description;
+    } else {
+      var html_str = "<b>"+d.Fire+"</b><br><em>Started at "+d.TimeStarted+"</em><br><em>Burned <b>"+formatthousands(d.Acreage)+"</b> acres</em><br><em>Killed <b>"+d.Victims+"</b></em>";
+    }
     var tempmarker = L.marker([d.Lat, d.Lon], {icon: fireIcon}).addTo(map).bindPopup(html_str);
     markerArray.push(tempmarker);
   });
@@ -299,6 +320,12 @@ document.getElementById("aboutthedata").addEventListener("click",function() {
 document.getElementById("close-data-box").addEventListener("click",function() {
   document.getElementById("aboutthedata-box").classList.remove("active");
   document.getElementById("aboutthedata-overlay").classList.remove("active");
+});
+
+// hide the about the data box
+document.getElementById("go-to-map").addEventListener("click",function() {
+  document.getElementById("aboutthestory-box").classList.remove("active");
+  document.getElementById("aboutthestory-overlay").classList.remove("active");
 });
 
 // adding and removing the air quality layer on button click

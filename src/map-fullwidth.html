@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="__sync_contentCategory" content="free">
     <meta http-equiv="refresh" content="7200">
-    <link rel="stylesheet" type="text/css" href="./fullwidth_style.css?v=25">
+    <link rel="stylesheet" type="text/css" href="./fullwidth_style.css?v=26">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- Leaflet -->
@@ -23,6 +23,14 @@
 
   <body>
 
+    <div class="overlay-aboutthedata active" id="aboutthestory-overlay">
+      <div class="aboutthedata-box active" id="aboutthestory-box">
+        <p class="note-from-editor">Interactive Map: Wine Country Fires</p>
+        <p><b>From the editor :</b> The first iteration of this interactive map was posted at 10:30 a.m. on Oct. 9. It was embedded into article pages, shared on social channels and featured on our North Bay Wildfires landing page. It required the reconciliation of conflicting and constantly changing data from several sources, including federal satellites and state monitoring equipment. It became one of our most popular pieces of content, racking up more than 20 million impressions in the first week, due to the lack of detailed and updated information available elsewhere.</p>
+        <p id="go-to-map">Go to the map<i class="fa fa-arrow-right" aria-hidden="true"></i></p>
+      </div>
+    </div>
+
     <div class="overlay-aboutthedata" id="aboutthedata-overlay">
       <div class="aboutthedata-box" id="aboutthedata-box">
         <div class="close-button" id="close-data-box"><i class="fa fa-times" aria-hidden="true"></i></div>
@@ -34,8 +42,8 @@
         <div class="source">Evacuation centers data are from <a href="http://www.caloes.ca.gov/ICESite/Pages/October-2017-Northern-California-Fires.aspx" target="_blank">Cal OES</a> and <a href="https://www.sonomacountyrecovers.org/" target="_blank">Sonoma County Public Safety</a>.</div>
         <div class="source">Information collected from Sonoma, Napa, Mendocino and Yuba counties.</div>
         <div class="smallbreak"></div>
-        <div class="credit">Graphics by John Blanchard</div>
-        <div class="credit">Research by Esther Mobley, Sarah Fritsche, Tara Duggan, Paolo Lucchesi, Clare Varellas, Drew Costley, Annie Vainshtein, Richard Geiger, Barry Hodge, Evan Sernoffsky and Graph Massara</div>
+        <div class="source">Graphics by John Blanchard</div>
+        <div class="source">Research by Esther Mobley, Sarah Fritsche, Tara Duggan, Paolo Lucchesi, Clare Varellas, Drew Costley, Annie Vainshtein, Richard Geiger, Barry Hodge, Evan Sernoffsky and Graph Massara</div>
 
       </div>
     </div>
@@ -88,7 +96,7 @@
         <div class="credits-box">
           <div class="credit">Fire hot spots updated on <span id="updateID"></span></div>
           <div class="credit"><span id="airDate"></span></div>
-          <div class="credit">Damaged wineries and deaths updated on Nov. 27.</div>
+          <div class="credit">Damaged wineries and deaths updated on Jan. 22.</div>
           <div class="credit">Evacuation centers include all centers open since Oct. 9.</div>
           <div class="credit">Development by <a href="mailto:eoneill@sfchronicle.com">Emma O'Neill</a>, <a href="mailto:cwirtanen@sfchronicle.com">Clint Wirtanen</a> and Lucio Villa</div>
           <div id="aboutthedata"><i class="fa fa-hand-o-right" aria-hidden="true"></i>Read about the data</div>
@@ -116,7 +124,7 @@
     <div class="credits-box mobile">
       <div class="credit">Fire hot spots updated on <span id="updateIDmobile"></span></div>
       <div class="credit"><span id="airDatemobile"></span></div>
-      <div class="credit">Damaged wineries and deaths updated on Nov. 27.</div>
+      <div class="credit">Damaged wineries and deaths updated on Jan. 22.</div>
       <div class="credit">Evacuation centers include all centers open since Oct. 9.</div>
       <div class="smallbreak"></div>
       <div class="source">Hot spots are locations identified by satellite analysts from <a href="http://www.ospo.noaa.gov/Products/land/hms.html" target="_blank">National Oceanic and Atmospheric Administration</a> based on various types of imaging.</div>
@@ -145,6 +153,6 @@
       var origins_data = <%= JSON.stringify(json.FireOrigins) %>
     </script>
 
-    <script src="./map-leaflet-fullwidth.js?v=26" async></script>
+    <script src="./map-leaflet-fullwidth.js?v=27" async></script>
   </body>
 </html>

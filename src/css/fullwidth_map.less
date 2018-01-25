@@ -26,7 +26,39 @@
   }
 }
 
-#aboutthedata-box {
+.note-from-editor {
+  font-family: @bold-graphics;
+  // border-bottom: 1px solid @light-gray;
+  padding-bottom: 5px;
+  font-size: 20px;
+  @media @mobile {
+    font-size: 18px;
+    line-height: 1.2;
+    max-width: 200px;
+    margin-left: 0;
+  }
+}
+
+#go-to-map {
+  width: 170px;
+  padding: 5px;
+  text-align: center;
+  font-family: @bold-graphics;
+  border: 2px solid @day7;
+  border-radius: 5px;
+  color: @day7;
+  cursor: pointer;
+  margin-top: 20px;
+  &:hover {
+    background: lighten(@day7,5%);
+    color: white;
+  }
+  .fa {
+    padding-left: 10px;
+  }
+}
+
+#aboutthedata-box, #aboutthestory-box {
   position: absolute;
   top: 10%;
   left: 0;
@@ -60,11 +92,20 @@
   }
 }
 
+#aboutthestory-box {
+  padding-top: 40px;
+  @media @mobile {
+    top: 5%;
+    margin: 20px;
+  }
+}
+
 #aboutthedata {
   cursor: pointer;
   color: @highlight;
   font-family: @bold-graphics;
   padding: 5px 0;
+  padding-top: 10px;
   .fa {
     padding-right: 5px;
   }
@@ -431,7 +472,7 @@ path {
   font-family: @med-graphics;
   max-width: 100%;
   text-align: left;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px 30px 20px;
   font-size: 14px;
   line-height: 1.4;
 
