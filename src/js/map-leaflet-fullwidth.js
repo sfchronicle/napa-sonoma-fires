@@ -323,6 +323,13 @@ document.getElementById("close-data-box").addEventListener("click",function() {
 });
 
 // hide the about the data box
+document.body.addEventListener("click",function() {
+  console.log("CLICK");
+  document.getElementById("aboutthestory-box").classList.remove("active");
+  document.getElementById("aboutthestory-overlay").classList.remove("active");
+});
+
+// hide the about the data box
 document.getElementById("go-to-map").addEventListener("click",function() {
   document.getElementById("aboutthestory-box").classList.remove("active");
   document.getElementById("aboutthestory-overlay").classList.remove("active");
